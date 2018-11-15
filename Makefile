@@ -6,7 +6,7 @@
 #    By: bboucher <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 15:17:30 by bboucher          #+#    #+#              #
-#    Updated: 2018/11/14 20:03:26 by bboucher         ###   ########.fr        #
+#    Updated: 2018/11/15 17:31:24 by bboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,13 @@ _SRC = ft_memset.c \
 	   ft_putnbr_fd.c \
 	   ft_iswhitespace.c \
 	   ft_isupper.c \
-	   ft_islower.c
+	   ft_islower.c \
+	   ft_lstnew.c \
+	   ft_lstdelone.c \
+	   ft_lstdel.c \
+	   ft_lstadd.c \
+	   ft_lstiter.c \
+	   ft_lstmap.c
 
 SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
 

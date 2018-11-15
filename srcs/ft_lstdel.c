@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 10:54:31 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/15 13:25:03 by bboucher         ###   ########.fr       */
+/*   Created: 2018/11/15 12:06:50 by bboucher          #+#    #+#             */
+/*   Updated: 2018/11/15 12:53:49 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *s)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	int	neg;
-	int	res;
+	t_list	*tmp;
 
-	while (ft_iswhitespace(*s))
-		s++;
-	neg = (*s == '-');
-	if (*s == '-' || *s == '+')
-		s++;
-	res = 0;
-	while (ft_isdigit(*s))
+	while (*alst)
 	{
-		res *= 10;
-		res += (*s - '0');
-		s++;
+		tmp = (*alst)->next;
+		ft_lstdelone(alst, del);
+		*alst = tmp;
 	}
-	return (neg ? -res : res);
 }

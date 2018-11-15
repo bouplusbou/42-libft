@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 10:54:31 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/15 13:25:03 by bboucher         ###   ########.fr       */
+/*   Created: 2018/11/15 15:03:28 by bboucher          #+#    #+#             */
+/*   Updated: 2018/11/15 15:20:36 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *s)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	int	neg;
-	int	res;
-
-	while (ft_iswhitespace(*s))
-		s++;
-	neg = (*s == '-');
-	if (*s == '-' || *s == '+')
-		s++;
-	res = 0;
-	while (ft_isdigit(*s))
+	while (lst)
 	{
-		res *= 10;
-		res += (*s - '0');
-		s++;
+		(*f)(lst);
+		lst = lst->next;
 	}
-	return (neg ? -res : res);
 }

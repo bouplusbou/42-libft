@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 10:54:31 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/15 13:25:03 by bboucher         ###   ########.fr       */
+/*   Created: 2018/11/15 09:14:42 by bboucher          #+#    #+#             */
+/*   Updated: 2018/11/15 12:03:39 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *s)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	int	neg;
-	int	res;
+	t_list	*new;
 
-	while (ft_iswhitespace(*s))
-		s++;
-	neg = (*s == '-');
-	if (*s == '-' || *s == '+')
-		s++;
-	res = 0;
-	while (ft_isdigit(*s))
+	if (!(new = (t_list*)malloc(sizeof(t_list))))
+		return (NULL);
+	if (content == NULL)
 	{
-		res *= 10;
-		res += (*s - '0');
-		s++;
+		new->content = NULL;
+		new->content_size = 0;
 	}
-	return (neg ? -res : res);
+	else
+	{
+		new->content = ft_memalloc(content_size);
+		ft_memmove(new->content, content, content_size);
+		new->content_size = content_size;
+	}
+	new->next = NULL;
+	return (new);
 }

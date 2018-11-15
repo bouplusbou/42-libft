@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 10:54:31 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/15 13:25:03 by bboucher         ###   ########.fr       */
+/*   Created: 2018/11/15 15:20:59 by bboucher          #+#    #+#             */
+/*   Updated: 2018/11/15 17:28:07 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *s)
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int	neg;
-	int	res;
-
-	while (ft_iswhitespace(*s))
-		s++;
-	neg = (*s == '-');
-	if (*s == '-' || *s == '+')
-		s++;
-	res = 0;
-	while (ft_isdigit(*s))
+	t_list	*beginning;
+	t_list	*tmp;
+	t_list	*new;
+	
+	tmp = f(lst);
+	if (!(new = ft_lstnew(tmp->content, tmp->content_size)))
+		return (NULL);
+	beginning = new;
+	lst = lst->next;
+	while (lst)
 	{
-		res *= 10;
-		res += (*s - '0');
-		s++;
+		tmp = f(lst);
+		if(!(new->next = ft_lstnew(tmp->content, tmp->content_size)))
+			return (NULL);
+		new = new->next;
+		lst = lst->next;
 	}
-	return (neg ? -res : res);
+	return (beginning);
 }
