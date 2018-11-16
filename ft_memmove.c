@@ -6,7 +6,7 @@
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 10:40:17 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/14 12:19:07 by bboucher         ###   ########.fr       */
+/*   Updated: 2018/11/16 12:57:09 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	i;
 
-	i = 0;
 	if (dst < src)
 	{
+		i = 0;
 		while (i < len)
 		{
 			((char *)dst)[i] = ((char *)src)[i];

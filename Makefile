@@ -6,17 +6,13 @@
 #    By: bboucher <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 15:17:30 by bboucher          #+#    #+#              #
-#    Updated: 2018/11/15 17:31:24 by bboucher         ###   ########.fr        #
+#    Updated: 2018/11/16 14:53:25 by bboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-IDIR = includes/
-
-SDIR = srcs
-
-_SRC = ft_memset.c \
+SRC = ft_memset.c \
 	   ft_bzero.c \
 	   ft_memcpy.c \
 	   ft_memccpy.c \
@@ -78,26 +74,28 @@ _SRC = ft_memset.c \
 	   ft_lstiter.c \
 	   ft_lstmap.c
 
-SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
+OBJ = $(SRC:.c=.o)
 
-OBJ = $(_SRC:.c=.o)
+CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME) :
-	@gcc $(FLAGS) -c -I $(IDIR) $(SRC)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
+$(NAME) : $(OBJ)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 	@echo "libft.a creation		OK"
 
+%.o: %.c
+	$(CC) -I. -o $@ -c $? $(CFLAGS)
+
 clean :
-	@/bin/rm -f $(OBJ)
+	/bin/rm -f $(OBJ)
 	@echo "clean		OK"
 
 fclean : clean
-	@/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME)
 	@echo "fclean		OK"
 
 re : fclean all

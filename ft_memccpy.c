@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 12:59:43 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/12 12:13:46 by bboucher         ###   ########.fr       */
+/*   Created: 2018/11/14 12:19:48 by bboucher          #+#    #+#             */
+/*   Updated: 2018/11/16 12:19:49 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *restrict s1, const char *restrict s2)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int	i;
-	int	l;
+	size_t	i;
 
-	l = ft_strlen(s1);
 	i = 0;
-	while (s2[i])
-		s1[l++] = s2[i++];
-	s1[l] = '\0';
-	return (s1);
+	while (i < n)
+	{
+		((char *)dst)[i] = ((char *)src)[i];
+		if (((unsigned char *)src)[i] == (unsigned char)c)
+			return (dst + i + 1);
+		i++;
+	}
+	return (NULL);
 }
