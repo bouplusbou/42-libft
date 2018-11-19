@@ -6,7 +6,7 @@
 #    By: bboucher <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 15:17:30 by bboucher          #+#    #+#              #
-#    Updated: 2018/11/16 14:53:25 by bboucher         ###   ########.fr        #
+#    Updated: 2018/11/19 16:32:31 by bboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,15 +64,15 @@ SRC = ft_memset.c \
 	   ft_putstr_fd.c \
 	   ft_putendl_fd.c \
 	   ft_putnbr_fd.c \
-	   ft_iswhitespace.c \
-	   ft_isupper.c \
-	   ft_islower.c \
 	   ft_lstnew.c \
 	   ft_lstdelone.c \
 	   ft_lstdel.c \
 	   ft_lstadd.c \
 	   ft_lstiter.c \
-	   ft_lstmap.c
+	   ft_lstmap.c \
+	   ft_isspace.c \
+	   ft_isupper.c \
+	   ft_islower.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -99,13 +99,3 @@ fclean : clean
 	@echo "fclean		OK"
 
 re : fclean all
-
-main : 
-	gcc $(FLAGS) -c -I $(IDIR) main.c $(SRC)
-	gcc main.o $(OBJ) -o test
-	rm main.o $(OBJ)
-
-cleantest :
-	rm -f test
-
-test : cleantest main

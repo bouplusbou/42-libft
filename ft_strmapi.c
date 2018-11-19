@@ -6,7 +6,7 @@
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 17:29:39 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/14 17:41:18 by bboucher         ###   ########.fr       */
+/*   Updated: 2018/11/19 11:39:01 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*mapi;
 	unsigned int	i;
 
-	if (!(s && f))
-		return (NULL);
-	if (!(mapi = ft_strnew(ft_strlen(s))))
+	if (!s || !f || !(mapi = ft_strnew(ft_strlen(s))))
 		return (NULL);
 	i = 0;
 	while (s[i])

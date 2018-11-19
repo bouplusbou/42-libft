@@ -6,7 +6,7 @@
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 15:51:46 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/14 19:23:53 by bboucher         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:23:43 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_putendl(char const *s)
 {
-	ft_putstr(s);
-	write(1, "\n", 1);
+	if (s)
+	{
+		ft_putstr(s);
+		write(1, "\n", 1);
+	}
 }

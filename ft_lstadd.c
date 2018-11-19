@@ -6,7 +6,7 @@
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 14:15:15 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/15 15:02:52 by bboucher         ###   ########.fr       */
+/*   Updated: 2018/11/19 15:26:08 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	 if (alst)
+	if (alst && new)
+	{
 		new->next = *alst;
-	 *alst = new;
+		*alst = new;
+	}
 }
-
-

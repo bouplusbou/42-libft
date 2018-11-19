@@ -6,7 +6,7 @@
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 16:14:11 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/16 12:26:28 by bboucher         ###   ########.fr       */
+/*   Updated: 2018/11/19 16:30:00 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 int				ft_isupper(int c);
 int				ft_islower(int c);
-int				ft_iswhitespace(char c);
+int				ft_isspace(char c);
 
 typedef struct	s_list
 {

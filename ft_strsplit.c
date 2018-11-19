@@ -6,7 +6,7 @@
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 16:27:15 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/14 19:37:16 by bboucher         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:40:03 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,23 @@ static int	ft_count_words(const char *s, char c)
 	return (w);
 }
 
+static void	ft_clean(char **tab, int j)
+{
+	int	i;
+
+	i = 0;
+	while (i <= j)
+		ft_strdel(&tab[i++]);
+}
+
 char		**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
 	int		i;
 	int		j;
 
-	if (!s)
-		return (NULL);
-	if (!(tab = (char**)malloc(sizeof(char*) * (ft_count_words(s, c) + 1))))
+	if (!s
+		|| !(tab = (char**)malloc(sizeof(char*) * (ft_count_words(s, c) + 1))))
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -67,7 +75,11 @@ char		**ft_strsplit(char const *s, char c)
 	{
 		if ((s[i - 1] == '\0' && s[i] != c) || (s[i - 1] == c && s[i] != c))
 		{
-			tab[j] = ft_malloc_word((s + i), c);
+			if (!(tab[j] = ft_malloc_word((s + i), c)))
+			{
+				ft_clean(tab, j);
+				return (NULL);
+			}
 			j++;
 		}
 		i++;

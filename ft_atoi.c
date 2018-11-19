@@ -6,7 +6,7 @@
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 10:54:31 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/15 13:25:03 by bboucher         ###   ########.fr       */
+/*   Updated: 2018/11/19 10:38:35 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_atoi(const char *s)
 	int	neg;
 	int	res;
 
-	while (ft_iswhitespace(*s))
+	while (ft_isspace(*s))
 		s++;
 	neg = (*s == '-');
 	if (*s == '-' || *s == '+')

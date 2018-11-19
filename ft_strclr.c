@@ -6,7 +6,7 @@
 /*   By: bboucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 14:55:26 by bboucher          #+#    #+#             */
-/*   Updated: 2018/11/14 19:26:34 by bboucher         ###   ########.fr       */
+/*   Updated: 2018/11/19 11:23:03 by bboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_strclr(char *s)
 {
-	if (!s)
-		return ;
-	ft_bzero(s, ft_strlen(s));
+	if (s)
+		ft_bzero(s, ft_strlen(s));
 }
